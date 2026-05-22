@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  const GAS_ENDPOINT = "https://script.google.com/macros/s/AKfycbyLXyYdl-fZTT2QlL8aWdtBS-Eedy0H6eNk1FfKYvHEELl8fvSwS-kPtMcsub1e21Ox/exec";
+  const GAS_ENDPOINT = "https://script.google.com/macros/s/AKfycbzwRQd2w8lubPYzRZiJpBcGhg66PszLCsqdlOA4_VNSYRQYcexqe1n2BOvRqrOR8GfO/exec";
   const messages = document.getElementById("messages");
   const form = document.getElementById("chatForm");
   const input = document.getElementById("messageInput");
