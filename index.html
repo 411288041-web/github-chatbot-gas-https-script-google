@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7efe7">
+    <title>chatbot</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="chat-panel" aria-label="chatbot 對話介面">
+        <header class="chat-header">
+          <div class="bot-mark" aria-hidden="true">c</div>
+          <div>
+            <h1>chatbot</h1>
+            <p>開朗、幽默，樂於陪你聊任何想知道的事。</p>
+          </div>
+        </header>
+
+        <div id="messages" class="messages" aria-live="polite" aria-relevant="additions">
+          <article class="message bot">
+            <div class="avatar" aria-hidden="true">c</div>
+            <div class="bubble">
+              <p>你好，我是 chatbot。今天想聊點什麼？我會認真回答，也會努力讓你嘴角上揚。</p>
+              <time></time>
+            </div>
+          </article>
+        </div>
+
+        <form id="chatForm" class="composer" autocomplete="off">
+          <button id="voiceButton" class="icon-button voice" type="button" aria-label="開始語音輸入" title="語音輸入">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z"></path>
+              <path d="M19 11a7 7 0 0 1-14 0"></path>
+              <path d="M12 18v3"></path>
+              <path d="M8 21h8"></path>
+            </svg>
+          </button>
+          <label class="input-wrap">
+            <span class="sr-only">輸入訊息</span>
+            <textarea id="messageInput" rows="1" placeholder="輸入訊息，按 Enter 送出"></textarea>
+          </label>
+          <button id="sendButton" class="send-button" type="submit" aria-label="送出訊息">
+            <span>送出</span>
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
