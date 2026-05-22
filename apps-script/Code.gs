@@ -1,14 +1,15 @@
 const SPREADSHEET_ID = "1DmuD-2esYlxvBCVUkk5rtPNesmW1Bdr3bYF5e7pHrYs";
-const SHEET_NAME = "Chatbot紀錄";
+const SHEET_NAME = "ChatbotLogs";
 const MODEL_NAME = "gpt-5.4-mini";
 const TIME_ZONE = "Asia/Taipei";
 
 function doGet(e) {
-  const callback = sanitizeCallbackName_(e.parameter.callback || "callback");
+  const params = e && e.parameter ? e.parameter : {};
+  const callback = sanitizeCallbackName_(params.callback || "callback");
 
   try {
-    const message = String(e.parameter.message || "").trim();
-    const sessionId = String(e.parameter.sessionId || "anonymous").trim();
+    const message = String(params.message || "").trim();
+    const sessionId = String(params.sessionId || "anonymous").trim();
 
     if (!message) {
       return jsonp_(callback, {
@@ -47,6 +48,7 @@ function doGet(e) {
       time: replyTime
     });
   } catch (error) {
+    console.error(error && error.stack ? error.stack : error);
     return jsonp_(callback, {
       ok: false,
       error: "系統目前無法完成回覆。"
@@ -55,8 +57,19 @@ function doGet(e) {
 }
 
 function doPost(e) {
+  const body = e && e.postData && e.postData.contents ? e.postData.contents : "{}";
   return doGet({
-    parameter: JSON.parse(e.postData.contents || "{}")
+    parameter: JSON.parse(body)
+  });
+}
+
+function testDoGet() {
+  return doGet({
+    parameter: {
+      callback: "cb",
+      sessionId: "apps-script-test",
+      message: "你好"
+    }
   });
 }
 
